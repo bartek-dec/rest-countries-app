@@ -4,10 +4,13 @@
     --dark-blue: hsl(209, 23%, 22%);
     --very-dark-blue-bg: hsl(207, 26%, 17%);
     --very-dark-blue-tx: hsl(200, 15%, 8%);
-    --dark-gray: hsl(0, 0%, 52%);
+    --light-gray: hsl(0, 0%, 52%);
+    --dark-gray: hsl(200, 15%, 8%);
     --very-light-gray: hsl(0, 0%, 98%);
     --white: hsl(0, 0%, 100%);
+    --dark-shadow: hsl(240, 56%, 2%);
 
+    --box-shadow: 1px 1px 6px -2px var(--dark-shadow);
     --border-radius: 1rem;
     --transition: all 0.3s linear;
     --full-width: 1170px;
@@ -29,9 +32,107 @@ body {
     font-weight: 300;
     color: var(--white);
     background-color: var(--very-dark-blue-bg);
+    letter-spacing: 1px;
+    transition: background-color 0.25s linear, color 0.25s linear;
+}
+
+/*== Light Mode*/
+body.light-mode {
+    --dark-blue: hsl(0, 0%, 100%);
+    --very-dark-blue-bg: hsl(0, 0%, 98%);
+    --very-dark-blue-tx: hsl(0, 0%, 100%);
+    --dark-gray: hsl(0, 0%, 52%);
+    --very-light-gray: hsl(207, 26%, 17%);
+    --white: hsl(200, 15%, 8%);
+    --dark-shadow: rgb(222, 222, 222);
 }
 
 img {
     display: block;
     width: 100%;
 }
+
+/*=============*/
+/*= Navbar
+/*=============*/
+.nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: var(--dark-blue);
+    box-shadow: var(--box-shadow);
+}
+
+.nav-wrapper {
+    width: 90vw;
+    max-width: var(--full-width);
+    margin: 0 auto;
+    height: 8rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-heading {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.btn {
+    color: var(--white);
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: var(--transition);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 1.5rem;
+}
+
+.btn-text {
+    font-size: 1.4rem;
+    font-weight: 300;
+    text-transform: capitalize;
+}
+
+.btn:hover {
+    color: var(--light-gray);
+}
+
+@media screen and (min-width: 750px) {
+    .nav-heading {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        font-size: 2.5rem;
+    }
+
+    .btn-text {
+        font-size: 1.8rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
