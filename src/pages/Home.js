@@ -1,10 +1,12 @@
 import React from 'react';
+import {Form} from '../components';
 
 const Home = () => {
     return (
-        <div>
+        <main className='main'>
+            <Form/>
             <h1>home</h1>
-        </div>
+        </main>
     );
 };
 
