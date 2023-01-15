@@ -1,11 +1,11 @@
 import React from 'react';
-import {Form} from '../components';
+import {Form, Spinner} from '../components';
 
 const Home = () => {
     return (
         <main className='main'>
             <Form/>
-            <h1>home</h1>
+            {/*<Spinner/>*/}
         </main>
     );
 };

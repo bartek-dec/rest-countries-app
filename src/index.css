@@ -232,6 +232,7 @@ img {
     border-radius: var(--border-radius);
     cursor: pointer;
     transition: var(--transition);
+    z-index: 5;
 }
 
 .dropdown-item {
@@ -254,6 +255,50 @@ img {
         width: 350px;
     }
 }
+
+/*=============*/
+/*= Spinner
+/*=============*/
+.spinner {
+    padding: 10rem 0;
+
+    display: flex;
+    justify-content: center;
+}
+
+.spinner div {
+    width: 10rem;
+    height: 10rem;
+    border: 5px solid var(--white);
+    border-top-color: var(--dark-gray);
+    border-right-color: var(--dark-gray);
+    border-radius: 50%;
+    animation: spinner 0.7s linear infinite;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
