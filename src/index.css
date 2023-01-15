@@ -245,6 +245,10 @@ img {
 }
 
 @media screen and (min-width: 750px) {
+    .form-wrapper {
+        padding-top: 5rem;
+    }
+
     .form {
         flex-direction: row;
         justify-content: space-between;
@@ -282,18 +286,77 @@ img {
     }
 }
 
+/*=============*/
+/*= Country Card
+/*=============*/
+.cards-container {
+    padding: 5rem 0;
 
 
+    display: grid;
+    justify-items: center;
+    gap: 5rem;
+}
 
+.card {
+    width: 70vw;
+    max-width: 240px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background-color: var(--dark-blue);
+    box-shadow: var(--box-shadow);
+}
 
+.card-content {
+    padding: 3rem 2rem;
+}
 
+.card-heading {
+    margin-bottom: 2rem;
+    font-size: 1.6rem;
+}
 
+.card-info {
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 2;
+}
 
+.card-info span {
+    font-size: 1.4rem;
+    font-weight: 300;
+}
 
+@media screen and (min-width: 600px) {
+    .cards-container {
+        grid-template-columns: repeat(2, auto);
+        justify-content: space-between;
+    }
 
+    .card-heading {
+        font-size: 1.8rem;
+    }
 
+    .card-info {
+        font-size: 1.6rem;
+    }
 
+    .card-info span {
+        font-size: 1.6rem;
+    }
+}
 
+@media screen and (min-width: 900px) {
+    .cards-container {
+        grid-template-columns: repeat(3, auto);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cards-container {
+        grid-template-columns: repeat(4, auto);
+    }
+}
 
 
 
