@@ -310,6 +310,11 @@ img {
 
 .card-content {
     padding: 3rem 2rem;
+    border-top: 1px solid var(--dark-blue);
+}
+
+.light-mode .card-content {
+    border-top: 1px solid var(--light-gray);
 }
 
 .card-heading {
