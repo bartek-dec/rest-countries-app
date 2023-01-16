@@ -306,6 +306,8 @@ img {
     overflow: hidden;
     background-color: var(--dark-blue);
     box-shadow: var(--box-shadow);
+    color: inherit;
+    text-decoration: none;
 }
 
 .card-content {
