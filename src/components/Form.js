@@ -1,16 +1,29 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {RxMagnifyingGlass} from 'react-icons/rx';
 import {BiChevronDown} from 'react-icons/bi';
+import {useDispatch, useSelector} from "react-redux";
+import {filterCountriesByRegion, setRegion} from '../features/country/countrySlice';
 
 const Form = () => {
     const [isActive, setIsActive] = useState(false);
     const [selected, setSelected] = useState('Filter by Region');
     const options = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+    const dispatch = useDispatch();
+    const {region} = useSelector((state) => state.country);
 
     const handleClick = (input) => {
         setSelected(input);
         setIsActive(false);
+        dispatch(setRegion(input));
     }
+
+    useEffect(() => {
+        if (region) {
+            dispatch(filterCountriesByRegion(region));
+        }
+        // eslint-disable-next-line
+    }, [region]);
+
     return (
         <section className='form-wrapper'>
             <form className='form'>
@@ -29,7 +42,7 @@ const Form = () => {
                         <div className='dropdown-content'>
                             {options.map((option, index) => {
                                 return <div key={index} className='dropdown-item'
-                                             onClick={() => handleClick(option)}>{option}</div>
+                                            onClick={() => handleClick(option)}>{option}</div>
                             })}
                         </div>
                     )}
