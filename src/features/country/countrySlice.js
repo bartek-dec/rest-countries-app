@@ -16,7 +16,8 @@ export const getAllCountries = createAsyncThunk('getAllCountries', async (_, thu
         const {data} = await axios.get(`${url}/all`);
         return data;
     } catch (error) {
-        return thunkAPI.rejectWithValue('Something went wrong. Please try again later');
+        console.log(error);
+        return thunkAPI.rejectWithValue('Not Found.');
     }
 });
 
@@ -25,7 +26,7 @@ export const filterCountriesByRegion = createAsyncThunk('filterCountriesByRegion
         const {data} = await axios.get(`${url}/region/${region}`);
         return data;
     } catch (error) {
-        return thunkAPI.rejectWithValue('Something went wrong. Please try again later');
+        return thunkAPI.rejectWithValue('Not Found.');
     }
 });
 
@@ -34,7 +35,7 @@ export const findCountryByName = createAsyncThunk('findCountryByName', async (na
         const {data} = await axios.get(`${url}/name/${name}`);
         return data;
     } catch (error) {
-        return thunkAPI.rejectWithValue('Something went wrong. Please try again later');
+        return thunkAPI.rejectWithValue('Not Found.');
     }
 })
 

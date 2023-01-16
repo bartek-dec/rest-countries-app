@@ -366,8 +366,17 @@ img {
     }
 }
 
+/*=============*/
+/*= Error Component
+/*=============*/
+.error {
+    padding: 10rem 0;
+}
 
-
+.error h2 {
+    color: var(--white);
+    text-align: center;
+}
 
 
 
