@@ -1,16 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Form, Spinner, CountryCard} from '../components';
-import {useSelector, useDispatch} from "react-redux";
-import {getAllCountries} from "../features/country/countrySlice";
+import {useSelector} from "react-redux";
 
 const Home = () => {
     const {isLoading, countries} = useSelector((state) => state.country);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getAllCountries());
-        // eslint-disable-next-line
-    }, []);
 
     return (
         <main className='main'>

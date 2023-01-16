@@ -7,13 +7,13 @@ const initialState = {
     isLoading: true,
     countries: [],
     errorMsg: '',
-    region: ''
+    region: '',
+    name: ''
 }
 
 export const getAllCountries = createAsyncThunk('getAllCountries', async (_, thunkAPI) => {
     try {
         const {data} = await axios.get(`${url}/all`);
-        console.log(data)
         return data;
     } catch (error) {
         return thunkAPI.rejectWithValue('Something went wrong. Please try again later');
@@ -27,6 +27,15 @@ export const filterCountriesByRegion = createAsyncThunk('filterCountriesByRegion
     } catch (error) {
         return thunkAPI.rejectWithValue('Something went wrong. Please try again later');
     }
+});
+
+export const findCountryByName = createAsyncThunk('findCountryByName', async (name, thunkAPI) => {
+    try {
+        const {data} = await axios.get(`${url}/name/${name}`);
+        return data;
+    } catch (error) {
+        return thunkAPI.rejectWithValue('Something went wrong. Please try again later');
+    }
 })
 
 const countrySlice = createSlice({
@@ -35,6 +44,9 @@ const countrySlice = createSlice({
     reducers: {
         setRegion: (state, action) => {
             state.region = action.payload;
+        },
+        setName: (state, action) => {
+            state.name = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -56,10 +68,19 @@ const countrySlice = createSlice({
         }).addCase(filterCountriesByRegion.rejected, (state, action) => {
             state.isLoading = false;
             state.errorMsg = action.payload;
+        }).addCase(findCountryByName.pending, (state) => {
+            state.isLoading = true;
+            state.errorMsg = '';
+        }).addCase(findCountryByName.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.countries = action.payload;
+        }).addCase(findCountryByName.rejected, (state, action) => {
+            state.isLoading = false;
+            state.errorMsg = action.payload;
         })
     }
 });
 
-export const {setRegion} = countrySlice.actions;
+export const {setRegion, setName} = countrySlice.actions;
 
 export default countrySlice.reducer;
