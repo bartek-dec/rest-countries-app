@@ -399,13 +399,14 @@ img {
 
     display: flex;
     align-items: center;
-    gap: 0 1rem;
+    /*gap: 0 1rem;*/
 }
 
 .btn-back svg {
     display: flex;
     align-items: center;
     font-size: 1.8rem;
+    margin-right: 1rem;
 }
 
 .country-flag {

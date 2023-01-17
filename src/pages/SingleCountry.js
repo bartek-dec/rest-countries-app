@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {getSingleCountry} from "../features/country/countrySlice";
 import {useSelector, useDispatch} from "react-redux";
 import {BiArrowBack} from 'react-icons/bi';
 import {SiOpenstreetmap} from 'react-icons/si';
-import {Spinner, ErrorComp} from "../components";
+import {Spinner, ErrorComp, Button} from "../components";
 
 const SingleCountry = () => {
     const {id} = useParams();
@@ -32,9 +32,7 @@ const SingleCountry = () => {
     if (!singleCountry.countryName) {
         return (
             <main className='main country'>
-                <Link to={'/'} className='btn-back'>
-                    <span><BiArrowBack/></span>Back
-                </Link>
+                <Button destination={`/`} icon={<BiArrowBack/>} text={`Back`}/>
                 <ErrorComp message={errorMsg}/>
             </main>
         )
@@ -42,10 +40,7 @@ const SingleCountry = () => {
 
     return (
         <main className='main country'>
-            <Link to={'/'} className='btn-back'>
-                <span><BiArrowBack/></span>Back
-            </Link>
-
+            <Button destination={`/`} icon={<BiArrowBack/>} text={`Back`}/>
             <div className='country-container'>
                 <div className='country-flag'>
                     <img src={flag} alt='flag' className='country-flag-img'/>
@@ -78,9 +73,8 @@ const SingleCountry = () => {
                         <div className='btn-container'>
                             {neighbours.length === 0 ? 'No neighbours' : neighbours.map((item, index) => {
                                 return (
-                                    <Link to={`/country/${item.cca2}`} className='btn-back' key={index}>
-                                        {`${item.name.common}`}
-                                    </Link>
+                                    <Button destination={`/country/${item.cca2}`} index={index}
+                                            text={`${item.name.common}`}/>
                                 )
                             })}
                         </div>

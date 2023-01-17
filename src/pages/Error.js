@@ -1,14 +1,11 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import {BiArrowBack} from "react-icons/bi";
-import {ErrorComp} from "../components";
+import {ErrorComp, Button} from "../components";
 
 const Error = () => {
     return (
         <main className='main error'>
-            <Link to={'/'} className='btn-back'>
-                <span><BiArrowBack/></span>Back
-            </Link>
+            <Button destination={`/`} icon={<BiArrowBack/>} text={`Back`}/>
             <ErrorComp message={`404. Not Found`}/>
         </main>
     );
