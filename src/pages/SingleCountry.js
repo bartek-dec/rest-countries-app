@@ -51,7 +51,7 @@ const SingleCountry = () => {
 
                     <div className='country-info info-1'>
                         <h3>Native Name: <span>{nativeName}</span></h3>
-                        <h3>Population: <span>{population}</span></h3>
+                        <h3>Population: <span>{population.toLocaleString()}</span></h3>
                         <h3>Region: <span>{region}</span></h3>
                         <h3>Sub Region: <span>{subregion}</span></h3>
                         <h3>Capitol: <span>{capital}</span></h3>
@@ -73,7 +73,7 @@ const SingleCountry = () => {
                         <div className='btn-container'>
                             {neighbours.length === 0 ? 'No neighbours' : neighbours.map((item, index) => {
                                 return (
-                                    <Button destination={`/country/${item.cca2}`} index={index}
+                                    <Button destination={`/country/${item.cca2}`} key={index}
                                             text={`${item.name.common}`}/>
                                 )
                             })}
