@@ -51,7 +51,7 @@ const SingleCountry = () => {
 
                     <div className='country-info info-1'>
                         <h3>Native Name: <span>{nativeName}</span></h3>
-                        <h3>Population: <span>{population.toLocaleString()}</span></h3>
+                        <h3>Population: <span>{population.toLocaleString('en-US')}</span></h3>
                         <h3>Region: <span>{region}</span></h3>
                         <h3>Sub Region: <span>{subregion}</span></h3>
                         <h3>Capitol: <span>{capital}</span></h3>
