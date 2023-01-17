@@ -378,6 +378,95 @@ img {
     text-align: center;
 }
 
+/*=============*/
+/*= Single Country
+/*=============*/
+.country {
+    padding: 5rem 0;
+    width: 85vw;
+}
+
+.btn-back {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    box-shadow: var(--box-shadow);
+    padding: 1rem 2.75rem;
+    border-radius: var(--border-radius);
+    width: fit-content;
+    text-decoration: none;
+    font-size: 1.6rem;
+    line-height: 1;
+
+    display: flex;
+    align-items: center;
+    gap: 0 1rem;
+}
+
+.btn-back svg {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+}
+
+.country-flag {
+    margin-top: 6rem;
+    max-width: 500px;
+    box-shadow: var(--box-shadow);
+}
+
+.country-name {
+    margin-top: 5rem;
+}
+
+.country-info {
+    margin-top: 3rem;
+}
+
+.country-info h3 {
+    font-size: 1.6rem;
+    line-height: 2;
+}
+
+.country-info span {
+    font-weight: 300;
+}
+
+.country-info a {
+    color: inherit;
+    margin-left: 1rem;
+}
+
+.country-borders {
+    margin-top: 3rem;
+}
+
+.country-borders h3 {
+    font-size: 1.8rem;
+}
+
+.btn-container {
+    margin-top: 3rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

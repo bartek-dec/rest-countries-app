@@ -23,7 +23,7 @@ const CountryList = () => {
                     const {population, region, capital} = country;
 
                     return (
-                        <Link to={`/country/${name}`} key={country.cca2} className='card'>
+                        <Link to={`/country/${country.cca2}`} key={country.cca2} className='card'>
                             <CountryCard flag={flag} name={name} population={population} region={region}
                                          capital={capital}/>
                         </Link>)

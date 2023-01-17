@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {RxMagnifyingGlass} from 'react-icons/rx';
 import {BiChevronDown} from 'react-icons/bi';
 import {useDispatch, useSelector} from "react-redux";
-import {filterCountriesByRegion, findCountryByName, getAllCountries, setRegion} from '../features/country/countrySlice';
+import {filterCountriesByRegion, findCountriesByName, getAllCountries, setRegion} from '../features/country/countrySlice';
 
 const Form = () => {
     const [isActive, setIsActive] = useState(false);
@@ -33,7 +33,7 @@ const Form = () => {
         let timeOutId;
         if (name) {
             timeOutId = setTimeout(() => {
-                dispatch(findCountryByName(name));
+                dispatch(findCountriesByName(name));
                 setSelected('Filter by Region');
             }, 1000);
         }else {

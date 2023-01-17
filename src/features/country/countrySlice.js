@@ -8,7 +8,7 @@ const initialState = {
     countries: [],
     errorMsg: '',
     region: '',
-    name: ''
+    singleCountry: {},
 }
 
 export const getAllCountries = createAsyncThunk('getAllCountries', async (_, thunkAPI) => {
@@ -30,14 +30,46 @@ export const filterCountriesByRegion = createAsyncThunk('filterCountriesByRegion
     }
 });
 
-export const findCountryByName = createAsyncThunk('findCountryByName', async (name, thunkAPI) => {
+export const findCountriesByName = createAsyncThunk('findCountryByName', async (name, thunkAPI) => {
     try {
         const {data} = await axios.get(`${url}/name/${name}`);
         return data;
     } catch (error) {
         return thunkAPI.rejectWithValue('Not Found.');
     }
-})
+});
+
+export const getSingleCountry = createAsyncThunk('getSingleCountry', async (id, thunkAPI) => {
+    try {
+        const {data} = await axios.get(`${url}/alpha/${id}`);
+
+        const country = data[0];
+        const flag = country.flags.svg;
+        const countryName = country.name.common;
+        const nativeName = Object.values(country.name.nativeName)[0].common;
+        const currencies = Object.values(country.currencies)[0].name;
+        const languages = Object.values(country.languages).join(', ');
+        const {population, region, subregion, capital, tld} = country;
+        const map = country.maps.googleMaps;
+
+        const singleCountry = {
+            flag, countryName, nativeName, currencies, languages, population, region, subregion,
+            capital, tld, map
+        };
+
+        let borders = data[0].borders;
+
+        if (borders) {
+            borders = borders.toString();
+            const neighbours = await axios.get(`${url}/alpha?codes=${borders}`);
+
+            return {...singleCountry, neighbours: neighbours.data};
+        }
+        return {...singleCountry, neighbours: []};
+    } catch (error) {
+        return thunkAPI.rejectWithValue('Not Found.');
+    }
+});
 
 const countrySlice = createSlice({
     name: 'countrySlice',
@@ -45,13 +77,11 @@ const countrySlice = createSlice({
     reducers: {
         setRegion: (state, action) => {
             state.region = action.payload;
-        },
-        setName: (state, action) => {
-            state.name = action.payload;
         }
     },
     extraReducers: (builder) => {
         builder.addCase(getAllCountries.pending, (state) => {
+            state.countries = [];
             state.isLoading = true;
             state.errorMsg = '';
         }).addCase(getAllCountries.fulfilled, (state, action) => {
@@ -69,19 +99,28 @@ const countrySlice = createSlice({
         }).addCase(filterCountriesByRegion.rejected, (state, action) => {
             state.isLoading = false;
             state.errorMsg = action.payload;
-        }).addCase(findCountryByName.pending, (state) => {
+        }).addCase(findCountriesByName.pending, (state) => {
             state.isLoading = true;
             state.errorMsg = '';
-        }).addCase(findCountryByName.fulfilled, (state, action) => {
+        }).addCase(findCountriesByName.fulfilled, (state, action) => {
             state.isLoading = false;
             state.countries = action.payload;
-        }).addCase(findCountryByName.rejected, (state, action) => {
+        }).addCase(findCountriesByName.rejected, (state, action) => {
+            state.isLoading = false;
+            state.errorMsg = action.payload;
+        }).addCase(getSingleCountry.pending, (state) => {
+            state.isLoading = true;
+            state.errorMsg = '';
+        }).addCase(getSingleCountry.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.singleCountry = action.payload;
+        }).addCase(getSingleCountry.rejected, (state, action) => {
             state.isLoading = false;
             state.errorMsg = action.payload;
         })
     }
 });
 
-export const {setRegion, setName} = countrySlice.actions;
+export const {setRegion} = countrySlice.actions;
 
 export default countrySlice.reducer;
