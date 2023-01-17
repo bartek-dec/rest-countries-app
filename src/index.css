@@ -512,8 +512,17 @@ img {
     }
 }
 
+/*=============*/
+/*= Single Country
+/*=============*/
+.error {
+    padding: 5rem 0;
+}
 
-
+.error h2 {
+    font-size: 5rem;
+    margin-top: 10rem;
+}
 
 
 
