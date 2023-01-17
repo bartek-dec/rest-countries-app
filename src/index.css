@@ -411,6 +411,9 @@ img {
 .country-flag {
     margin-top: 6rem;
     max-width: 500px;
+}
+
+.country-flag-img {
     box-shadow: var(--box-shadow);
 }
 
@@ -442,17 +445,72 @@ img {
 
 .country-borders h3 {
     font-size: 1.8rem;
+    line-height: 1;
 }
 
 .btn-container {
     margin-top: 3rem;
+    font-size: 1.8rem;
+    line-height: 1;
 
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
 }
 
+@media screen and (min-width: 750px) {
+    .country-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 4rem;
+    }
 
+    .country-name {
+        font-size: 2.75rem;
+    }
+}
+
+@media screen and (min-width: 1180px) {
+    .country-container {
+        display: grid;
+        grid-template-columns: minmax(300px, 480px) 1fr;
+        gap: 0 6rem;
+    }
+
+    .country-detail {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 3rem;
+        grid-template-areas:
+            'a a'
+            'b c'
+            'd d';
+    }
+
+    .country-name {
+        grid-area: a;
+    }
+
+    .info-1 {
+        grid-area: b;
+    }
+
+    .info-2 {
+        grid-area: c;
+    }
+
+    .country-borders {
+        grid-area: d;
+
+        display: grid;
+        grid-template-columns: 18rem 1fr;
+    }
+
+    .btn-container {
+        margin-top: 0;
+        align-self: start;
+    }
+}
 
 
 

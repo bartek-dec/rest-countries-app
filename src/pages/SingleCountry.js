@@ -54,7 +54,7 @@ const SingleCountry = () => {
                 <div className='country-detail'>
                     <h2 className='country-name'>{countryName}</h2>
 
-                    <div className='country-info'>
+                    <div className='country-info info-1'>
                         <h3>Native Name: <span>{nativeName}</span></h3>
                         <h3>Population: <span>{population}</span></h3>
                         <h3>Region: <span>{region}</span></h3>
@@ -62,7 +62,7 @@ const SingleCountry = () => {
                         <h3>Capitol: <span>{capital}</span></h3>
                     </div>
 
-                    <div className='country-info'>
+                    <div className='country-info info-2'>
                         <h3>Top Level Domain: <span>{tld}</span></h3>
                         <h3>Currencies: <span>{currencies}</span></h3>
                         <h3>Languages: <span>{languages}</span></h3>
